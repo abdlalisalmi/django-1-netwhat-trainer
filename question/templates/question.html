@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %} NetWhat Trainer {% endblock title %}
+
+{% block content %}
+
+    <div class="jumbotron my-auto bg-white">
+        <div class="card text-center">
+            <div class="card-header">
+                {{question.question}}
+            </div>
+            <div class="card-body">
+                <form method="post" action="{%url 'question:repons_handle' language question.id %}">
+                    {% csrf_token %}
+                    <br>
+                    {% for choice in choice_list %}
+                        <div class="custom-control custom-radio text-left ">
+                            <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}" class="custom-control-input">
+                            <label class="custom-control-label" for="choice{{ forloop.counter }}"><h8>{{ choice.choice }}</h8></label>
+                        </div>
+                        <hr>
+                    {% endfor %}
+
+                    <br>
+                    {% if error_message %}<p class="text-danger"><strong>{{ error_message }}</strong></p>{% endif %}
+                    <div class='card text-center'>
+                        <button type="submit" class="btn btn-outline-primary">Next >></button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{question.progress}}%;" aria-valuenow="{{question.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% comment %} <div class='card'>
+        <div class="card-body ">
+            <h3>{{question.question}}</h3>
+        </div>
+    </div>
+    <br>
+    <div >
+        <form method="post" action="{%url 'question:repons_handle' language question.id %}">
+            {% csrf_token %}
+
+            {% for choice in choice_list %}
+                <div class="custom-control custom-radio" class='text-center'>
+                    <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}" class="custom-control-input">
+                    <label class="custom-control-label " for="choice{{ forloop.counter }}">{{ choice.choice }}</label>
+                </div>
+            {% endfor %}
+
+            <br>
+            {% if error_message %}<p class="text-danger"><strong>{{ error_message }}</strong></p>{% endif %}
+            <button type="submit" class="btn btn-outline-primary">Next >></button>
+        </form>
+        <br>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{question.progress}}%;" aria-valuenow="{{question.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div> {% endcomment %}
+
+{% endblock content %}

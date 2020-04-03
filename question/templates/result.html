@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} Your Result {% endblock title %}
+
+{% block content %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>You're complete the training, now it's time to know your result.</p>
+        <hr>
+        <button type="button" class="btn btn-success">
+            Number of correct answers: <span class="badge badge-light btn btn-outline-success">{{number_correct}}</span>
+        </button>
+        <button type="button" class="btn btn-danger">
+            Number of wrong answers: <span class="badge badge-light btn-outline-danger">{{number_worng}}</span>
+        </button>
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Tips!</strong> To Hide Any Question, Click ' Question N° '
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    {% for q in question %}
+        <div id="accordion">
+        <div class="card ">
+            <div class="card-header card-body text-success" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#{{q.id}}" aria-expanded="true" aria-controls="collapseOne">
+                        Question {{forloop.counter}}
+                    </button>
+                </h5>
+            </div>
+            <div id="{{q.id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">{{q.question}}</div>
+                <div class="card-body">
+                    <p>You have chosen: <strong class="text-primary">{{q.selected_choice}}</strong></p>
+                    {% if q.selected_choice == q.correct_choice %}
+                        <p><span class="text-success">Your choice is correct</span></p>
+                    {% else %}
+                        <p class="text-danger">That's wrong the correct answer is <strong class="text-success">{{q.correct_choice}}</strong></p>
+                    {% endif %} 
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    <div class="card text-center">
+        {% if language == 'en' %}
+            <a href="{% url 'question:question_view' language 1 %}" class="btn btn-outline-primary">Start Again</a>
+        {% elif language == 'fr'%}
+            <a href="{% url 'question:question_view' language 1 %}" class="btn btn-outline-primary">Recommence</a>
+        {% endif %}
+    </div>
+{% endblock content %}

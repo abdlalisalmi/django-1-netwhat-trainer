@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} NetWhat Trainer {% endblock title %}
+
+{% block content %}
+        <br>
+        <div class="card text-center">
+            <div class="card-header p-3 mb-2 bg-secondary text-white">
+                NetWhat Project
+            </div>
+            <div class="card-body">
+
+                <h5 class="card-title text-left text-primary">Description:</h5>
+                <p class="card-text text-left">Netwhat will allow you to discover the network and to 
+                understand how it works. This will allow you to understand how some things you already 
+                use in your everyday life, without even knowing it. For that you will answer a questionnaire 
+                on the website netwhat.42.fr. If you unregister this project, you will need to wait three days 
+                before you can retry the subject.</p>
+                <hr>
+                <h5 class="card-title text-left text-primary">Skills:</h5>
+                <p class="card-text text-left">Network & system administration</p>
+                <hr>
+                <h5 class="card-title text-left text-primary">General instructions:</h5>
+                <p class="card-text text-left">Netwhat is a multiple choice project. This project will evaluate 
+                your network knowledge. You can start by reading network lessons on the internet. After that you 
+                can use online quizes to test your knowledge. Once you’ve done that and you feel that you are ready 
+                topass our quiz, you can go to: <a class="text-info" href='https://www.netwhat.42.f'>netwhat.42.fr</a>.</p>
+                <hr>
+                <h5 class="card-title text-left text-primary">Mandatory part:</h5>
+                <ul class='text-left'>
+                    <li>first of all, you should know a few things:</li>
+                    <ul>
+                        <li>What is an IP address</li>
+                        <li>What is a Netmask</li>
+                        <li>What is the subnet of an IP with Netmask</li>
+                        <li>What is the broadcast address of a subnet</li>
+                        <li>What are the different ways to represent an ip address with the Netmask</li>
+                        <li>What are the differences between public and private IPs</li>
+                        <li>What is a class of IP addresses</li>
+                        <li>What is TCP</li>
+                        <li>What is UDP</li>
+                        <li>What are the network layers</li>
+                        <li>What is the OSI model</li>
+                        <li>What is a DHCP server and the DHCP protocol</li>
+                        <li>What is a DNS server and the DNS protocol</li>
+                        <li>What are the rules to make 2 devices communicate using IP addresses</li>
+                        <li>How does routing work with IP</li>
+                        <li>What is a default gateway for routing</li>
+                        <li>What is a port from an IP point of view and what is it used for when connecting to another device</li>
+                    </ul>
+                    <li>Go to the website: netwhat.42.fr. This site will provide access to the network quiz</li>
+                    <li>Once connected, you will have access to the quiz interface. You can only pass it
+                        once per try, and you will have to retry the project to be able to retry the quiz.
+                        At the end an encrypted key will be generated. This key will be used during your
+                        evaluation (see Turn-in and peer-evaluation).</li>
+                </ul>
+            </div>
+            
+                
+        </div>
+                <hr>
+            <div class="card-footer text-center">
+                <p class="card-header p-3 mb-2 bg-secondary text-white">Start Training</p>
+                <a href="/question/en/1/" class="btn btn-outline-success">English</a>
+                <a href="/question/fr/1/" class="btn btn-outline-success">Français</a>
+            </div>
+
+{% endblock content %}
